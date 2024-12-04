@@ -1,0 +1,45 @@
+BraineeClassifier/
+│
+├── Model/
+│   ├── Brian_Tumor_Classifier.h5
+│   ├── model.py
+│   └── README.md
+│
+├── WebApp/
+│   ├── dist/
+│   │   └── assets/
+│   │       ├── index-BWFEWxv4.js
+│   │       └── index-C3TnxNo-.css
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── home/
+│   │   │   │   └── Hero.tsx
+│   │   │   ├── layout/
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   ├── Header.tsx
+│   │   │   │   └── Link.tsx
+│   │   │   └── upload/
+│   │   │       ├── AnalysisResults.tsx
+│   │   │       ├── RegionCard.tsx
+│   │   │       ├── ResultCard.tsx
+│   │   │       └── UploadSection.tsx
+│   │   ├── types/
+│   │   │   ├── analysis.ts
+│   │   │   └── file.ts
+│   │   └── utils/
+│   │       ├── analysisResults.ts
+│   │       ├── fileHandling.ts
+│   │       └── reportGenerator.ts
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+│
+├── .gitignore
+├── app.py
+└── README.md
