@@ -45,7 +45,7 @@ Backend/
 ```json
 {
     "prediction": "Tumor" | "No Tumor",
-    "confidence": 0.85  // Prediction confidence (0-1)
+    "confidence": 0.98  // Prediction confidence (0-1)
 }
 ```
 
