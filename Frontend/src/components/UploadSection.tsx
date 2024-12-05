@@ -53,7 +53,7 @@ export function UploadSection() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:5000/predict', {
+      const response = await fetch('https://braineeclassifier.vercel.app/predict', {
         method: 'POST',
         body: formData,
       });
