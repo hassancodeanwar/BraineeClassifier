@@ -24,7 +24,7 @@ export function Footer() {
                className="text-gray-400 hover:text-gray-500">
               <Github className="h-5 w-5 sm:h-6 sm:w-6" />
             </a>
-            <a href="https://linkedin.com/hassancodeanwar" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/hassancodeanwar/" target="_blank" rel="noopener noreferrer"
                className="text-gray-400 hover:text-gray-500">
               <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
             </a>
