@@ -47,7 +47,7 @@
 1. **Clone the Repository**  
    ```bash
    git clone https://github.com/hassancodeanwar/braineeclassifier.git  
-   cd brainee-classifier  
+   cd braineeclassifier  
    ```  
 
 2. **Backend Setup**  
