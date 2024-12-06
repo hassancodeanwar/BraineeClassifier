@@ -75,7 +75,7 @@
      ```  
    - Start the React app:  
      ```bash
-     npm start  
+     npm run dev  
      ```  
 
 ---
