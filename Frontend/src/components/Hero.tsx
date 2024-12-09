@@ -28,7 +28,7 @@ export function Hero() {
           </div>
           <div className="relative flex justify-center md:justify-end mt-8 md:mt-0">
             <img
-              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&q=80&w=800"
+              src="https://img.freepik.com/premium-photo/understanding-complexity-human-brain-anatomy-exploring-regions-functions_578399-6191.jpg"
               alt="Brain MRI Visualization"
               className="rounded-2xl shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300"
             />
