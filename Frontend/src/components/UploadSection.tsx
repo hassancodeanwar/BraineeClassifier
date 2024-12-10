@@ -53,7 +53,7 @@ export function UploadSection() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('https://67586084d1409400d101832b--soft-llama-8b599e.netlify.app/predict', {
+      const response = await fetch('https://braineeclassefierbackend.netlify.app/predict', {
         method: 'POST',
         body: formData,
       });
