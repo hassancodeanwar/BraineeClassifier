@@ -53,7 +53,7 @@ export function UploadSection() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('https://crainee-classifier-backend.vercel.app/predict', {
+      const response = await fetch('https://brainee-classifier-backend-floral-wave-2498.fly.dev/predict', {
         method: 'POST',
         body: formData,
       });
