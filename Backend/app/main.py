@@ -14,7 +14,7 @@ CORS(app)  # Enable CORS for all routes
 # Configuration
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-MODEL_PATH = 'Brain_Tumor_Classifier_Enhanced.h5'
+MODEL_PATH = 'model/Brain_Tumor_Classifier_Enhanced.h5'
 
 # Ensure upload folder exists
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
