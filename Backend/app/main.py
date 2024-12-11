@@ -1,4 +1,3 @@
-
 import os
 import numpy as np
 from flask import Flask, request, jsonify
@@ -7,26 +6,25 @@ from werkzeug.utils import secure_filename
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import tensorflow as tf
+import tempfile
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, resources={
+    r"/predict": {
+        "origins": [
+            "http://localhost:3000",
+            "https://brainee-classifier-web.vercel.app/"
+        ]
+    }
+})
 
-# Configuration
-UPLOAD_FOLDER = 'uploads'
+# Configuration for Vercel
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-MODEL_PATH = 'model/Brain_Tumor_Classifier_Enhanced.h5'
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model', 'Brain_Tumor_Classifier_Enhanced.h5')
 
-# Ensure upload folder exists
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
-# Configure app
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 5MB max file size
-
-# Load pre-trained model
+# Load pre-trained model (consider lazy loading or alternative model hosting)
 model = load_model(MODEL_PATH)
 
-# Helper functions
 def allowed_file(filename):
     """Check if file has an allowed extension"""
     return '.' in filename and \
@@ -62,13 +60,13 @@ def predict():
     # Validate file type and size
     if file and allowed_file(file.filename):
         try:
-            # Secure filename and save file
-            filename = secure_filename(file.filename)
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(filepath)
+            # Use tempfile for serverless environment
+            with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(file.filename)[1]) as temp_file:
+                file.save(temp_file.name)
+                temp_filepath = temp_file.name
             
             # Preprocess image
-            processed_img = preprocess_image(filepath)
+            processed_img = preprocess_image(temp_filepath)
             
             # Make prediction
             prediction = model.predict(processed_img)
@@ -79,8 +77,8 @@ def predict():
             confidence = prediction[0][predicted_class_index]
             predicted_class = class_labels[predicted_class_index]
             
-            # Remove uploaded file
-            os.remove(filepath)
+            # Remove temporary file
+            os.unlink(temp_filepath)
             
             return jsonify({
                 'prediction': predicted_class,
@@ -99,6 +97,10 @@ def health_check():
     """Simple health check endpoint"""
     return jsonify({'status': 'healthy'}), 200
 
+# Vercel serverless function entry point
+def handler(event, context):
+    return app(event, context)
+
+# For local development
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
-
