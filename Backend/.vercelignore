@@ -1,0 +1,6 @@
+.git
+.vercel
+*.pyc
+__pycache__
+.env
+uploads/
