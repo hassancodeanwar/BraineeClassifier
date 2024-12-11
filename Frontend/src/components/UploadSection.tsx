@@ -53,7 +53,7 @@ export function UploadSection() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('https://bc-backend.fly.dev/predict', {
+      const response = await fetch('https://crainee-classifier-backend.fly.dev/predict', {
         method: 'POST',
         body: formData,
       });
